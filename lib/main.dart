@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:crud_api_rest/data/models/album_model.dart';
 import 'package:crud_api_rest/data/repository/album_repository.dart';
@@ -53,8 +52,8 @@ class ListResponse extends StatefulWidget {
 class _ListResponseState extends State<ListResponse> {
   late AlbumService _albumService;
   late AlbumRepository _albumRepository;
-  late bool isLoading;
-  late List<Album> albums;
+  bool isLoading = true;
+  List<Album>? albums;
   String? errorMessage;
 
   @override
@@ -62,12 +61,13 @@ class _ListResponseState extends State<ListResponse> {
     _albumService = AlbumService(baseUrl: Api.baseUrl);
     _albumRepository = AlbumRepository(albumService: _albumService);
     _loadingAlbums();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return CircularProgressIndicator();
+      return const CircularProgressIndicator();
     }
 
     if (errorMessage != null) {

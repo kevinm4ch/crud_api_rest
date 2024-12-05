@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:crud_api_rest/album_model.dart';
+import 'package:crud_api_rest/data/models/album_model.dart';
 import 'package:crud_api_rest/data/service/album_service.dart';
 
 class AlbumRepository {
